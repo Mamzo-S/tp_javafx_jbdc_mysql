@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox spacing="10" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.tp1javafx.Controller.UserController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- Menu Bar -->
+    <MenuBar fx:id="menuB" style="-fx-background-color: #28a745;">
+        <Menu text="Fichier" style="-fx-text-fill: white;">
+            <MenuItem text="Se déconnecter" onAction="#seDeconnecter"/>
+            <MenuItem text="Quitter" onAction="#seDeconnecter"/>
+        </Menu>
+    </MenuBar>
+
+    <!-- Titre -->
+    <Label fx:id="userLabel" text="Menu Utilisateur" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+    <!-- Formulaire d'ajout/modification -->
+    <VBox spacing="10" style="-fx-border-color: #ddd; -fx-border-radius: 5; -fx-background-color: white; -fx-padding: 15;">
+        <Label text="Ajouter/Modifier un produit" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+
+        <HBox spacing="10">
+            <Label text="Libellé:" style="-fx-font-size: 11; -fx-font-weight: bold;" HBox.hgrow="NEVER"/>
+            <TextField fx:id="libelleT" promptText="Libellé du produit" HBox.hgrow="ALWAYS"/>
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Prix:" style="-fx-font-size: 11; -fx-font-weight: bold;" HBox.hgrow="NEVER"/>
+            <TextField fx:id="prixT" promptText="Prix" HBox.hgrow="ALWAYS"/>
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Quantité:" style="-fx-font-size: 11; -fx-font-weight: bold;" HBox.hgrow="NEVER"/>
+            <TextField fx:id="quantiteT" promptText="Quantité" HBox.hgrow="ALWAYS"/>
+        </HBox>
+
+        <HBox spacing="10">
+            <Button text="Ajouter" onAction="#addProduct" style="-fx-padding: 10; -fx-font-size: 12; -fx-font-weight: bold; -fx-background-color: #28a745; -fx-text-fill: white; -fx-cursor: hand;" HBox.hgrow="ALWAYS"/>
+            <Button text="Modifier" onAction="#updateProduct" style="-fx-padding: 10; -fx-font-size: 12; -fx-font-weight: bold; -fx-background-color: #ffc107; -fx-text-fill: black; -fx-cursor: hand;" HBox.hgrow="ALWAYS"/>
+            <Button text="Réinitialiser" onAction="#clearForm" style="-fx-padding: 10; -fx-font-size: 12; -fx-font-weight: bold; -fx-background-color: #6c757d; -fx-text-fill: white; -fx-cursor: hand;" HBox.hgrow="ALWAYS"/>
+        </HBox>
+    </VBox>
+
+    <!-- Tableau des produits -->
+    <Label text="Mes produits" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+    <TableView fx:id="tableProd" VBox.vgrow="ALWAYS" onMouseClicked="#selectProduct">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="colLibelle" text="Libellé" prefWidth="200"/>
+            <TableColumn fx:id="colPrix" text="Prix (€)" prefWidth="100"/>
+            <TableColumn fx:id="colQuantite" text="Quantité" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <!-- Boutons d'action -->
+    <HBox spacing="10">
+        <Button text="Supprimer" onAction="#deleteProduct" style="-fx-padding: 10; -fx-font-size: 12; -fx-font-weight: bold; -fx-background-color: #dc3545; -fx-text-fill: white; -fx-cursor: hand;" HBox.hgrow="ALWAYS"/>
+    </HBox>
+</VBox>
